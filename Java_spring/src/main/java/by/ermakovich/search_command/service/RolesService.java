@@ -1,14 +1,22 @@
 package by.ermakovich.search_command.service;
 
 import by.ermakovich.search_command.entity.Roles;
+import by.ermakovich.search_command.repository.RolesRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-public interface RolesService {
+@Service
+public class RolesService{
 
-    void create(Roles event);
+    @Autowired
+    private RolesRepository rolesRepository;
 
-    Roles read(Long id);
 
-    boolean update(Roles request, Long id);
+    public Roles findFirstByName(String name) {
+        return null;
+    }
 
-    boolean delete(Long id);
+    public Roles getById(long id) {
+        return rolesRepository.getById(id);
+    }
 }

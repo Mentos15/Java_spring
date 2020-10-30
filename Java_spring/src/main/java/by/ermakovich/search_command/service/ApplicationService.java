@@ -2,14 +2,32 @@ package by.ermakovich.search_command.service;
 
 
 import by.ermakovich.search_command.entity.Application;
+import by.ermakovich.search_command.repository.ApplicationRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-public interface ApplicationService {
+import java.util.List;
 
-    void create(Application application);
+@Service
+public class ApplicationService {
 
-    Application read(long id);
+    @Autowired
+    private ApplicationRepository applicationRepository;
 
-    boolean update(Application game, Long id);
+    public Application addApp(Application application){
+        return applicationRepository.saveAndFlush(application);
+    }
 
-    boolean delete(Long id);
+    public void deleteApp(Long id) {
+        applicationRepository.deleteById(id);
+    }
+    public List<Application> findByIdGreaterThan(long id) {
+
+        return applicationRepository.findByIdGreaterThan(0);
+    }
+
+    public Application findById(long id) {
+        return applicationRepository.findById(id);
+    }
+
 }

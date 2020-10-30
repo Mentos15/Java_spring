@@ -18,8 +18,8 @@ public class Roles {
     public long getId(){return id;}
     public void setId(long id){this.id = id;}
 
-    public String getUsername() {return name;}
-    public void setUsername(String name) {
+    public String getName() {return name;}
+    public void setName(String name) {
         this.name = name;
     }
 

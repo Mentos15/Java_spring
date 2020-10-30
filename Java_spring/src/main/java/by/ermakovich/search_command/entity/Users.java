@@ -8,6 +8,8 @@ import java.util.Set;
 @Entity
 @Table(name="Users")
 public class Users {
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -20,10 +22,13 @@ public class Users {
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
-            name = "user_roles",
+            name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
+
+
+
     private Set<Roles> roles = new HashSet<>();
 
     public long getId(){return id;}
@@ -42,5 +47,13 @@ public class Users {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Set<Roles> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Roles> roles) {
+        this.roles = roles;
     }
 }

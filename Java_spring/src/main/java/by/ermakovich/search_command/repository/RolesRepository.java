@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface RolesRepository extends JpaRepository<Roles, Long> {
-    @Query(value = "FROM Roles WHERE name = :name")
-    List<Roles> findByName(@Param("name") String name);
+    Roles findFirstByName(String name);
+
+    Roles getById(long id);
 }

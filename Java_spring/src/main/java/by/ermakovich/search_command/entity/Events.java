@@ -19,8 +19,7 @@ public class Events {
     @Column(name = "requirement", length = 500, nullable = false)
     private String requirement;
 
-    @OneToMany
-    @JoinColumn(name = "aplication_id", referencedColumnName = "id", nullable = false)
+    @OneToMany(mappedBy = "events")
     private List<Application> aplication;
 
     public long getId() {

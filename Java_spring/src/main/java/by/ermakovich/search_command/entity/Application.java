@@ -13,7 +13,7 @@ public class Application {
     @Column(name="name", nullable = false, length = 20)
     private String name;
 
-    @Column(name="lastname", nullable = false, length = 20)
+    @Column(name="lastName", nullable = false, length = 20)
     private String lastName;
 
     @Column(name="description", nullable = false, length = 500)
@@ -24,7 +24,7 @@ public class Application {
     private Users users;
 
     @ManyToOne
-    @JoinColumn(name = "id", referencedColumnName = "aplication_id", nullable = false)
+    @JoinColumn(name = "event_id", nullable = false)
     private Events events;
 
     public long getId(){return id;}

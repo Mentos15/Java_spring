@@ -1,15 +1,36 @@
 package by.ermakovich.search_command.service;
 
 import by.ermakovich.search_command.entity.Events;
+import by.ermakovich.search_command.repository.EventsRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-public interface EventsService {
+import java.util.List;
 
-    void create(Events event);
 
-    Events read(Long id);
+@Service
+public class EventsService {
 
-    boolean update(Events request, Long id);
+    @Autowired
+    private EventsRepository eventsRepository;
 
-    boolean delete(Long id);
+    public Events addEvent(Events event){
+        return eventsRepository.saveAndFlush(event);
+    }
+
+    public void deleteEvent(Long id) {
+        eventsRepository.deleteById(id);
+    }
+
+    public List<Events> findByIdGreaterThan(long id) {
+        return eventsRepository.findByIdGreaterThan(0);
+    }
+
+    public List<Events> findByTitle(String title) {
+        return eventsRepository.findByTitle(title);
+    }
+
+    public Events findById(long id){return eventsRepository.findById(id);}
+
 
 }
